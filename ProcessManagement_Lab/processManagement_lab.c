@@ -192,7 +192,6 @@ void main_loop(char* fileName){
               shmPTR_jobs_buffer[i].task_status = 1; //new, undone job
               sem_post(sem_jobs_buffer[i]); // signal the child
               not_done = 0;
-              no_of_busy = 0;
               break;
             } else if (status == 9) {
               if (no_of_busy >= number_of_processes-1) {
@@ -209,7 +208,6 @@ void main_loop(char* fileName){
                   shmPTR_jobs_buffer[i].task_status = 1; //new, undone job
                   sem_post(sem_jobs_buffer[i]);
                   not_done = 0;
-                  no_of_busy = 0;
                   break;
                 }
               } else {
